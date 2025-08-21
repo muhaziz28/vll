@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color backgroundColor = Color(0xFFF8F7F7);
   static const Color fieldColor = Color(0xFFEFEDED);
+  static const Color outlineColor = Color(0xFFE0E0E0);
+  static const Color customGrey = Color(0xFFEEEEEE);
+  static const Color hintLabelColor = Color(0xFF828282);
+  static const Color mutedColor = Color(0xFF6C6C6C);
 
   static const Color green0 = Color(0xFFFFFFFF);
   static const Color green05 = Color(0xFFF1F7EB);

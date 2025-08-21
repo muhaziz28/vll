@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:llv/core/colors.dart';
 import 'package:llv/features/home/ui/widgets/recommendation_card.dart';
+import 'package:llv/features/langkap_linguistik/ui/screens/langkap_linguistik_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -84,151 +85,159 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(fontSize: 12),
                 ),
                 const SizedBox(height: 12),
-                SizedBox(
-                  width: double.infinity,
-                  height: 136,
-                  child: PageView.builder(
-                    controller: _pageController,
-                    onPageChanged: (index) {
-                      setState(() {
-                        _currentPage = index;
-                      });
-                    },
-                    itemCount: _banner.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Stack(
-                            children: [
-                              Image.asset(
-                                _banner[index]['image'],
-                                width: double.infinity,
-                                height: 136,
-                                fit: BoxFit.cover,
-                              ),
-                              Container(
-                                width: double.infinity,
-                                height: 136,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      AppColors.blue4.withValues(alpha: 0.1),
-                                      AppColors.blue4.withValues(alpha: 0.7),
-                                    ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 0,
-                                left: 0,
-                                right: 0,
-                                bottom: 0,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        _banner[index]['text'],
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600,
-                                          shadows: [
-                                            Shadow(
-                                              offset: Offset(1, 1),
-                                              blurRadius: 3,
-                                              color: Colors.black54,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 12,
-                                left: 0,
-                                right: 0,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: List.generate(_banner.length, (
-                                    dotIndex,
-                                  ) {
-                                    return Container(
-                                      width: 8,
-                                      height: 8,
-                                      margin: const EdgeInsets.symmetric(
-                                        horizontal: 4,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: _currentPage == dotIndex
-                                            ? Colors.white
-                                            : Colors.white.withValues(
-                                                alpha: .4,
-                                              ),
-                                      ),
-                                    );
-                                  }),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                // SizedBox(
+                //   width: double.infinity,
+                //   height: 136,
+                //   child: PageView.builder(
+                //     controller: _pageController,
+                //     onPageChanged: (index) {
+                //       setState(() {
+                //         _currentPage = index;
+                //       });
+                //     },
+                //     itemCount: _banner.length,
+                //     itemBuilder: (context, index) {
+                //       return Container(
+                //         margin: const EdgeInsets.symmetric(horizontal: 4),
+                //         decoration: BoxDecoration(
+                //           borderRadius: BorderRadius.circular(8),
+                //         ),
+                //         child: ClipRRect(
+                //           borderRadius: BorderRadius.circular(8),
+                //           child: Stack(
+                //             children: [
+                //               Image.asset(
+                //                 _banner[index]['image'],
+                //                 width: double.infinity,
+                //                 height: 136,
+                //                 fit: BoxFit.cover,
+                //               ),
+                //               Container(
+                //                 width: double.infinity,
+                //                 height: 136,
+                //                 decoration: BoxDecoration(
+                //                   gradient: LinearGradient(
+                //                     colors: [
+                //                       AppColors.blue4.withValues(alpha: 0.1),
+                //                       AppColors.blue4.withValues(alpha: 0.7),
+                //                     ],
+                //                     begin: Alignment.topCenter,
+                //                     end: Alignment.bottomCenter,
+                //                   ),
+                //                 ),
+                //               ),
+                //               Positioned(
+                //                 top: 0,
+                //                 left: 0,
+                //                 right: 0,
+                //                 bottom: 0,
+                //                 child: Padding(
+                //                   padding: const EdgeInsets.only(left: 20),
+                //                   child: Column(
+                //                     mainAxisAlignment: MainAxisAlignment.center,
+                //                     crossAxisAlignment:
+                //                         CrossAxisAlignment.start,
+                //                     children: [
+                //                       Text(
+                //                         _banner[index]['text'],
+                //                         style: TextStyle(
+                //                           color: Colors.white,
+                //                           fontSize: 18,
+                //                           fontWeight: FontWeight.w600,
+                //                           shadows: [
+                //                             Shadow(
+                //                               offset: Offset(1, 1),
+                //                               blurRadius: 3,
+                //                               color: Colors.black54,
+                //                             ),
+                //                           ],
+                //                         ),
+                //                       ),
+                //                     ],
+                //                   ),
+                //                 ),
+                //               ),
+                //               Positioned(
+                //                 bottom: 12,
+                //                 left: 0,
+                //                 right: 0,
+                //                 child: Row(
+                //                   mainAxisAlignment: MainAxisAlignment.center,
+                //                   children: List.generate(_banner.length, (
+                //                     dotIndex,
+                //                   ) {
+                //                     return Container(
+                //                       width: 8,
+                //                       height: 8,
+                //                       margin: const EdgeInsets.symmetric(
+                //                         horizontal: 4,
+                //                       ),
+                //                       decoration: BoxDecoration(
+                //                         shape: BoxShape.circle,
+                //                         color: _currentPage == dotIndex
+                //                             ? Colors.white
+                //                             : Colors.white.withValues(
+                //                                 alpha: .4,
+                //                               ),
+                //                       ),
+                //                     );
+                //                   }),
+                //                 ),
+                //               ),
+                //             ],
+                //           ),
+                //         ),
+                //       );
+                //     },
+                //   ),
+                // ),
                 const SizedBox(height: 14),
                 Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        height: 148,
-                        padding: EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          image: DecorationImage(
-                            image: AssetImage('assets/bg_peta.png'),
-                            fit: BoxFit.fill,
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => LangkapLinguistikScreen(),
                           ),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 40,
-                              height: 40,
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Image.asset(
-                                'assets/icon_map.png',
-                                fit: BoxFit.contain,
-                              ),
+                        child: Container(
+                          height: 148,
+                          padding: EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            image: DecorationImage(
+                              image: AssetImage('assets/bg_peta.png'),
+                              fit: BoxFit.fill,
                             ),
-                            Text(
-                              'Peta',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 40,
+                                height: 40,
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Image.asset(
+                                  'assets/icon_map.png',
+                                  fit: BoxFit.contain,
+                                ),
                               ),
-                            ),
-                          ],
+                              Text(
+                                'Peta',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
