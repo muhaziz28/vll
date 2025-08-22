@@ -3,7 +3,15 @@ import 'package:llv/core/colors.dart';
 import 'package:llv/features/discover/ui/widgets/post_card.dart';
 
 class DiscoverScreen extends StatelessWidget {
-  const DiscoverScreen({super.key});
+  final VoidCallback? onHideNavBar;
+  final VoidCallback? onShowNavBar;
+  final Function(Widget)? onNavigate;
+  const DiscoverScreen({
+    super.key,
+    this.onHideNavBar,
+    this.onShowNavBar,
+    this.onNavigate,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -2,9 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:llv/core/colors.dart';
 import 'package:llv/features/home/ui/widgets/recommendation_card.dart';
 import 'package:llv/features/langkap_linguistik/ui/screens/langkap_linguistik_screen.dart';
+import 'package:llv/features/peta/ui/screens/peta_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final VoidCallback? onHideNavBar;
+  final VoidCallback? onShowNavBar;
+  final Function(Widget)? onNavigate;
+  const HomeScreen({
+    super.key,
+    this.onHideNavBar,
+    this.onShowNavBar,
+    this.onNavigate,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -198,9 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: GestureDetector(
                         onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (_) => LangkapLinguistikScreen(),
-                          ),
+                          MaterialPageRoute(builder: (_) => PetaScreen()),
                         ),
                         child: Container(
                           height: 148,
@@ -284,45 +291,53 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           SizedBox(height: 12),
-                          Container(
-                            width: double.infinity,
-                            height: 68,
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: AppColors.blue4,
-                              borderRadius: BorderRadius.circular(8),
-                              image: DecorationImage(
-                                image: AssetImage('assets/bg_lancap.png'),
-                                fit: BoxFit.cover, // Tambahkan fit
+                          GestureDetector(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => LangkapLinguistikScreen(),
                               ),
                             ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.asset(
-                                    'assets/icon_book.png',
-                                    fit: BoxFit.contain,
-                                  ),
+                            child: Container(
+                              width: double.infinity,
+                              height: 68,
+                              padding: EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: AppColors.blue4,
+                                borderRadius: BorderRadius.circular(8),
+                                image: DecorationImage(
+                                  image: AssetImage('assets/bg_lancap.png'),
+                                  fit: BoxFit.cover, // Tambahkan fit
                                 ),
-                                SizedBox(width: 12),
-                                Expanded(
-                                  child: Text(
-                                    'Lanscap Linguistik',
-                                    style: TextStyle(
-                                      fontSize: 16,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 40,
+                                    height: 40,
+                                    padding: EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
                                       color: Colors.white,
+                                      shape: BoxShape.circle,
                                     ),
-                                    maxLines: 2,
+                                    child: Image.asset(
+                                      'assets/icon_book.png',
+                                      fit: BoxFit.contain,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  SizedBox(width: 12),
+                                  Expanded(
+                                    child: Text(
+                                      'Lanscap Linguistik',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                      ),
+                                      maxLines: 2,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],

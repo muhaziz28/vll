@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 label: "Continue",
                 onPressed: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => WrapperScreen()),
+                  MaterialPageRoute(builder: (_) => DynamicWrapperScreen()),
                 ),
               ),
             ),

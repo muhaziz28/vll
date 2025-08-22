@@ -3,7 +3,15 @@ import 'package:llv/core/colors.dart';
 import 'package:llv/features/profile/ui/widgets/profile_action.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  final VoidCallback? onHideNavBar;
+  final VoidCallback? onShowNavBar;
+  final Function(Widget)? onNavigate;
+  const ProfileScreen({
+    super.key,
+    this.onHideNavBar,
+    this.onShowNavBar,
+    this.onNavigate,
+  });
 
   @override
   Widget build(BuildContext context) {
